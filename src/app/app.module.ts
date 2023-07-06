@@ -17,6 +17,7 @@ import { EvenementComponent } from './evenement/evenement.component';
 import { FormationComponent } from './formation/formation.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SortPipe } from './sort.pipe';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SortPipe } from './sort.pipe';
     FormationComponent,
     NavbarComponent,
     SortPipe,
+    FeedbackComponent,
   ],
   imports: [
     BrowserModule,

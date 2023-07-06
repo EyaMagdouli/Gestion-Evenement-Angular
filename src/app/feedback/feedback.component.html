@@ -1,0 +1,21 @@
+<h2>Feedbacks</h2>
+
+<ul>
+  <li *ngFor="let feedback of feedbacks">
+    <span  *ngIf="feedToBeUpdated.idFeed == feedback.idFeed">
+        <input type="text" [(ngModel)]="feedback.description"/>
+        <button (click)="edit(feedback)" >Save</button>
+    </span>
+    
+    <span  *ngIf="feedToBeUpdated.idFeed != feedback.idFeed">
+        {{feedback.description}} - {{feedback.dateFeed | date:'short'}}
+        <button (click)="edit(feedback)" >Edit</button>
+    </span>
+    <button (click)="deleteFeedback(feedback)">Supprimer</button>
+  </li>
+</ul>
+
+<form (submit)="addFeedback(newFeedback.value)">
+  <input #newFeedback type="text" name="description" placeholder="Nouveau feedback" required>
+  <button type="submit">Ajouter</button>
+</form>
