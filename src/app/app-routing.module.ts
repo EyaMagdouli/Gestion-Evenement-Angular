@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { LogistiqueComponent } from './logistique/logistique.component';
 import { EvenementComponent } from './evenement/evenement.component';
 import { FormationComponent } from './formation/formation.component';
+import  {StatisticsComponent} from './statistique/statistique.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -11,6 +12,8 @@ const routes: Routes = [
   {path:'logistiques', component:LogistiqueComponent},
   {path:'events', component:EvenementComponent},
   {path:'formations', component:FormationComponent},
+  {path:'statistiques', component:StatisticsComponent},
+
 ];
 
 @NgModule({
