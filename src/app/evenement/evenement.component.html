@@ -1,0 +1,80 @@
+<div class="container">
+    <h1>Evenements</h1>
+  
+    <!-- Display evenements data -->
+    <table class="evenements-table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evenement of evenements" class="evenement-item">
+          <td>{{ evenement.idEvent }}</td>
+          <td>{{ evenement.nom }}</td>
+          <td>{{ evenement.dateEvent }}</td>
+          <td>{{ evenement.typeEvent }}</td>
+          <td>{{ evenement.description }}</td>
+          <td>
+            <button (click)="updateEvenement(evenement)" class="btn-edit">Edit</button>
+            <button (click)="deleteEvenement(evenement.idEvent)" class="btn-delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Create form for adding new evenement -->
+    <div class="evenement-form">
+      <h2>Add New Evenement</h2>
+      <form (ngSubmit)="createEvenement(newEvenement)" class="form">
+        <div class="form-group">
+          <label for="nom">Nom:</label>
+          <input type="text" id="nom" [(ngModel)]="newEvenement.nom" name="nom" required>
+        </div>
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input type="date" id="date" [(ngModel)]="newEvenement.dateEvent" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="type">Type:</label>
+          <input type="text" id="type" [(ngModel)]="newEvenement.typeEvent" name="type" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" [(ngModel)]="newEvenement.description" name="description" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Add Evenement</button>
+      </form>
+    </div>
+  
+    <!-- Update form for editing existing evenement -->
+    <div *ngIf="editingEvenement" class="evenement-form">
+      <h2>Edit Evenement</h2>
+      <form (ngSubmit)="updateEvenement(editingEvenement)" class="form">
+        <div class="form-group">
+          <label for="edit-nom">Nom:</label>
+          <input type="text" id="edit-nom" [(ngModel)]="editingEvenement.nom" name="edit-nom" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-date">Date:</label>
+          <input type="date" id="edit-date" [(ngModel)]="editingEvenement.dateEvent" name="edit-date" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-type">Type:</label>
+          <input type="text" id="edit-type" [(ngModel)]="editingEvenement.typeEvent" name="edit-type" required>
+        </div>
+        <div class="form-group">
+            <label for="edit-description">Description:</label>
+            <textarea id="edit-description" [(ngModel)]="editingEvenement.description" name="edit-description" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Update</button>
+          <button type="button" (click)="cancelEdit()" class="btn-cancel">Cancel</button>
+        </form>
+      </div>
+    
+    </div>

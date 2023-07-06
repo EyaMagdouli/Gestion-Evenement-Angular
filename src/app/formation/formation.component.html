@@ -1,0 +1,69 @@
+<div class="container">
+    <h1>Formations</h1>
+  
+    <!-- Display formations data -->
+    <table class="formations-table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let formation of formations" class="formation-item">
+          <td>{{ formation.idForm }}</td>
+          <td>{{ formation.nom }}</td>
+          <td>{{ formation.dateForm }}</td>
+          <td>{{ formation.typeForm }}</td>
+          <td>
+            <button (click)="updateFormation(formation)" class="btn-edit">Edit</button>
+            <button (click)="deleteFormation(formation.idForm)" class="btn-delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Create form for adding new formation -->
+    <div class="formation-form">
+      <h2>Add New Formation</h2>
+      <form (ngSubmit)="createFormation(newFormation)" class="form">
+        <div class="form-group">
+          <label for="nom">Nom:</label>
+          <input type="text" id="nom" [(ngModel)]="newFormation.nom" name="nom" required>
+        </div>
+        <div class="form-group">
+          <label for="dateForm">Date:</label>
+          <input type="date" id="dateForm" [(ngModel)]="newFormation.dateForm" name="dateForm" required>
+        </div>
+        <div class="form-group">
+          <label for="type">Type:</label>
+          <input type="text" id="type" [(ngModel)]="newFormation.typeForm" name="type" required>
+        </div>
+        <button type="submit" class="btn-submit">Add Formation</button>
+      </form>
+    </div>
+  
+    <!-- Update form for editing existing formation -->
+    <div *ngIf="editingFormation" class="formation-form">
+      <h2>Edit Formation</h2>
+      <form (ngSubmit)="updateFormation(editingFormation)" class="form">
+        <div class="form-group">
+          <label for="edit-nom">Nom:</label>
+          <input type="text" id="edit-nom" [(ngModel)]="editingFormation.nom" name="edit-nom" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-dateForm">Date:</label>
+          <input type="text" id="edit-dateForm" [(ngModel)]="editingFormation.dateForm" name="edit-dateForm" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-type">Type:</label>
+          <input type="text" id="edit-type" [(ngModel)]="editingFormation.typeForm" name="edit-type" required>
+        </div>
+        <button type="submit" class="btn-submit">Update</button>
+        <button type="button" (click)="cancelEdit()" class="btn-cancel">Cancel</button>
+      </form>
+    </div>
+  </div>
